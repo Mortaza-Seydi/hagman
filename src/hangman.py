@@ -81,6 +81,8 @@ def random_letter():
 
     ####### YOUR CODE HERE ######
 
+def gbu():
+    print('hey geb')
 
 def play_hangman():
     # Actually play the hangman game
