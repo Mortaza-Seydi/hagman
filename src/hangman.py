@@ -111,6 +111,7 @@ def random_letter():
 
 def letter_checker(guessed_letter):
 
+    # checks if a letter is in the secret word or not and respectively does proper actions
     global letters_guessed
     global mistakes_made
     global letter_domain
@@ -128,6 +129,7 @@ def letter_checker(guessed_letter):
 
 
 def get_number_of_letters(word):
+    # just for returning count of each given word's letters
     return len(set(word))
 
 
@@ -147,6 +149,7 @@ def play_hangman():
     for _ in secret_word:
         guessed_word += '-'
 
+    # playing th game
     while mistakes_made < MAX_GUESSES:
         guessed_letter = random_letter()
         letter_checker(guessed_letter)
@@ -156,7 +159,7 @@ def play_hangman():
 
         if result:
             break
-
+    # shows the result
     hangman_lib.print_hangman_image(mistakes_made)
 
     return None
