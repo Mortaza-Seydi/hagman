@@ -1,8 +1,6 @@
-# hangman.py
 # Import statements: DO NOT delete these! DO NOT write code above this!
 from random import randrange
 from string import *
-
 
 
 WORDLIST_FILENAME = "words.txt"
@@ -16,14 +14,19 @@ def load_words():
     take a while to finish.
     """
     print("Loading word list from file...")
+
     # inFile: file
     inFile = open(WORDLIST_FILENAME, 'r')
+
     # line: string
     line = inFile.readline()
+
     # wordlist: list of strings
     wordlist = line.split()
+
     print("  ", len(wordlist), "words loaded.")
     print('Enter play_hangman() to play a game of hangman!')
+
     return wordlist
 
 
@@ -54,10 +57,10 @@ letters_guessed = []
 
 
 def word_guessed():
-    '''
+    """
     Returns True if the player has successfully guessed the word,
     and False otherwise.
-    '''
+    """
     global secret_word
     global letters_guessed
 
@@ -65,9 +68,9 @@ def word_guessed():
 
 
 def print_guessed():
-    '''
+    """
     Prints out the characters you have guessed in the secret word so far
-    '''
+    """
     global secret_word
     global letters_guessed
 
@@ -75,14 +78,12 @@ def print_guessed():
 
 
 def random_letter():
-    '''
+    """
     generate random letter to guess word
-    '''
+    """
 
     ####### YOUR CODE HERE ######
 
-def gbu():
-    print('hey geb')
 
 def play_hangman():
     # Actually play the hangman game

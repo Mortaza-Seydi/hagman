@@ -1,11 +1,11 @@
 # hangman.py
-
 # Import statements: DO NOT delete these! DO NOT write code above this!
 import string
 from random import randrange
 import hangman_lib
 
-WORDLIST_FILENAME = "words.txt"
+
+Word_List_File_Name = "words.txt"
 
 
 def load_words():
@@ -16,15 +16,20 @@ def load_words():
     take a while to finish.
     """
     print("Loading word list from file...")
+
     # inFile: file
-    inFile = open(WORDLIST_FILENAME, 'r')
+    in_file = open(Word_List_File_Name, 'r')
+
     # line: string
-    line = inFile.readline()
-    # wordlist: list of strings
-    wordlist = line.split()
-    print("  ", len(wordlist), "words loaded.")
-    # print('Enter play_hangman() to play a game of hangman!')
-    return wordlist
+    line = in_file.readline()
+
+    # word list: list of strings
+    word_list = line.split()
+
+    print("  ", len(word_list), "words loaded.")
+    print('Hangman Started ...')
+
+    return word_list
 
 
 # actually load the dictionary of words and point to it with
@@ -42,13 +47,14 @@ def get_word():
     Returns a random word from the word list
     """
     word = words_dict[randrange(0, len(words_dict))]
+
     return word
 
 
 # CONSTANTS
 MAX_GUESSES = 6
 
-# GLOBAL VARIABLES 
+# GLOBAL VARIABLES
 secret_word = ''
 letters_guessed = []
 mistakes_made = 0
@@ -57,41 +63,47 @@ guessed_word = ''
 
 
 def word_guessed():
-    '''
+    """
     Returns True if the player has successfully guessed the word,
     and False otherwise.
-    '''
+    """
     global secret_word
     global letters_guessed
     counter = 0
     result = False
+
     for a in letters_guessed:
         if a in secret_word:
             counter += 1
+
     if counter == get_number_of_letters(secret_word):
         result = True
+
     return result
 
 
 def print_guessed(guessed_letter):
-    '''
+    """
     Prints out the characters you have guessed in the secret word so far
-    '''
+    """
+
     global secret_word
     global letters_guessed
     global guessed_word
+
     i = 0
     for a in secret_word:
         if a == guessed_letter:
             guessed_word = guessed_word[:i] + guessed_letter + guessed_word[i + 1:]
         i += 1
-    print(guessed_word)
+
+    print('Word : ', guessed_word)
 
 
 def random_letter():
-    '''
+    """
     generate random letter to guess word
-    '''
+    """
 
     letter = letter_domain[randrange(0, len(letter_domain))]
     return letter
@@ -102,12 +114,16 @@ def letter_checker(guessed_letter):
     global letters_guessed
     global mistakes_made
     global letter_domain
-    print('guessed_letter : ',guessed_letter)
+
+    print('guessed_letter : ', guessed_letter)
+
     letters_guessed.append(guessed_letter)
+
     if guessed_letter in secret_word:
         letter_domain.remove(guessed_letter)
     else:
         mistakes_made += 1
+
     print_guessed(guessed_letter)
 
 
@@ -134,6 +150,7 @@ def play_hangman():
     while mistakes_made < MAX_GUESSES:
         guessed_letter = random_letter()
         letter_checker(guessed_letter)
+
         if len(letters_guessed) >= get_number_of_letters(secret_word):
             result = word_guessed()
 
