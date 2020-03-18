@@ -1,4 +1,4 @@
 # Hangman
 
 ## Morteza seydi 96463129
-## hossein raufi 96463120
+## Hossein raoofi 96463120
